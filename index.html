@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        .calculator-display {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            overflow-x: auto;
+        }
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .calculator-buttons button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .calculator-buttons button:hover {
+            background-color: #d0d0d0;
+        }
+        .calculator-buttons button.operator {
+            background-color: #f39c12;
+            color: white;
+        }
+        .calculator-buttons button.operator:hover {
+            background-color: #e67e22;
+        }
+        .calculator-buttons button.equals {
+            grid-column: span 2;
+            background-color: #27ae60;
+            color: white;
+        }
+        .calculator-buttons button.equals:hover {
+            background-color: #2ecc71;
+        }
+        .calculator-buttons button.clear {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .calculator-buttons button.clear:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="calculator-display" id="display" disabled value="0">
+        <div class="calculator-buttons">
+            <button class="clear" onclick="window.calculate.clearDisplay()">AC</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('sqrt(')">√</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('^')">xʸ</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('/')">/</button>
+
+            <button onclick="window.calculate.appendToDisplay('7')">7</button>
+            <button onclick="window.calculate.appendToDisplay('8')">8</button>
+            <button onclick="window.calculate.appendToDisplay('9')">9</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('*')">*</button>
+
+            <button onclick="window.calculate.appendToDisplay('4')">4</button>
+            <button onclick="window.calculate.appendToDisplay('5')">5</button>
+            <button onclick="window.calculate.appendToDisplay('6')">6</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('-')">-</button>
+
+            <button onclick="window.calculate.appendToDisplay('1')">1</button>
+            <button onclick="window.calculate.appendToDisplay('2')">2</button>
+            <button onclick="window.calculate.appendToDisplay('3')">3</button>
+            <button class="operator" onclick="window.calculate.appendToDisplay('+')">+</button>
+
+            <button onclick="window.calculate.appendToDisplay('0')">0</button>
+            <button onclick="window.calculate.appendToDisplay('.')">.</button>
+            <button class="equals" onclick="window.calculate.calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script src="./logic.js"></script>
+</body>
+</html>
